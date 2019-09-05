@@ -186,7 +186,7 @@ void PowerManagementTask(void) {
 		else
 			LedFunctionSetRGB(LED_CHARGE_STATUS, r, g, b);
 
-		if ( ((batteryRsoc >= wakeupOnCharge && CHARGER_IS_INPUT_PRESENT() && CHARGER_IS_BATTERY_PRESENT()) || rtcWakeupEventFlag) && MS_TIME_COUNT(lastHostCommandTimer) > 15000 && MS_TIME_COUNT(lastWakeupTimer) > 30000 ) {
+		if ( ((CHARGER_IS_INPUT_PRESENT() && CHARGER_IS_BATTERY_PRESENT()) || rtcWakeupEventFlag) && MS_TIME_COUNT(lastHostCommandTimer) > 15000 && MS_TIME_COUNT(lastWakeupTimer) > 30000 ) {
 			if ( WakeUpHost() == 0 ) {
 				wakeupOnCharge = 0xFFFF;
 				rtcWakeupEventFlag = 0;
